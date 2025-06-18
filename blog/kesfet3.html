@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keşfet - Chatbot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card {
+            border-radius: 15px;
+        }
+
+        .code-block {
+            font-family: 'Courier New', monospace;
+        }
+
+        .list-group-item {
+            border-radius: 10px;
+        }
+
+        .btn-lg {
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn-lg:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<div id="chatbot-details" class="container my-5">
+    <div class="card shadow-lg rounded p-4 bg-light">
+        <h2 class="text-center text-primary">💬 Chatbot Projesi</h2>
+        <p class="lead text-dark text-center">Kendi akıllı sohbet botunu oluştur! Kullanıcılara yanıt veren bir bot geliştir.</p>
+
+        <div class="row mt-4">
+            <!-- Görsel -->
+            <div class="col-md-6">
+                <img src="blog_img/chatbot.png" class="img-fluid rounded shadow">
+            </div>
+
+            <!-- Açıklamalar -->
+            <div class="col-md-6">
+                <h4 class="text-success">🛠️ Gereksinimler</h4>
+                <ul class="list-group">
+                    <li class="list-group-item">Python 3.x</li>
+                    <li class="list-group-item">NLTK veya ChatterBot kütüphanesi</li>
+                    <li class="list-group-item">Kullanıcı girdilerini işlemek için doğal dil analizi</li>
+                    <li class="list-group-item">Terminal veya web tabanlı arayüz</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Kod Örneği -->
+        <h4 class="text-warning mt-5">💻 Örnek Kod</h4>
+        <pre class="code-block p-3 rounded bg-dark text-white">
+            from chatterbot import ChatBot
+            from chatterbot.trainers import ChatterBotCorpusTrainer
+
+            # Chatbot oluşturma
+            bot = ChatBot("Asistan")
+
+            # Eğitim
+            trainer = ChatterBotCorpusTrainer(bot)
+            trainer.train("chatterbot.corpus.turkish")  # Türkçe için eğitim
+
+            # Kullanıcı ile etkileşim
+            while True:
+                user_input = input("Sen: ")
+                response = bot.get_response(user_input)
+                print("Bot:", response)
+        </pre>
+
+        <!-- Yapılış Adımları -->
+        <h4 class="text-danger mt-4">🚀 Nasıl Yapılır?</h4>
+        <ol class="list-group list-group-numbered">
+            <li class="list-group-item">Python ortamınızı hazırlayın (`pip install chatterbot nltk`).</li>
+            <li class="list-group-item">Chatbot'unuzu oluşturun ve veri setiyle eğitin.</li>
+            <li class="list-group-item">Kullanıcı girdilerini analiz edip yanıt veren bir yapı kurun.</li>
+            <li class="list-group-item">Terminalde çalıştırın veya Flask/Django ile web tabanlı hale getirin.</li>
+        </ol>
+
+        <!-- Geri Dön Butonu -->
+        <div class="text-center mt-5">
+            <button class="btn btn-primary btn-lg shadow" onclick="window.location.href='projeler.html';">🔙 Geri Dön</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

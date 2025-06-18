@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazılım Dillleri Hakkında Herşey </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .nav-link {
+            color: #fdfafa !important;
+            opacity: 1 !important;
+            font-weight: 500;
+        }
+
+        .btn-white {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #ccc;
+        }
+
+        .btn-white:hover {
+            background-color: #f0f0f0;
+            color: #000;
+        }
+
+        .navbar-brand {
+            color: #fdfafa !important;
+            opacity: 1 !important;
+            font-weight: 500;
+        }
+
+        .dropdown-menu {
+            background-color: #343a40;
+            /* koyu gri */
+        }
+
+        .dropdown-menu .dropdown-item {
+            color: #ffffff;
+            /* beyaz yazı */
+        }
+
+        .dropdown-menu .dropdown-item:hover {
+            background-color: #495057;
+            /* hover efekti için daha açık gri */
+        }
+
+        .dropdown-divider {
+            border-top: 1px solid #6c757d;
+        }
+
+
+        .hero-section {
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 720px!important;
+            color: white;
+        }
+
+        @media (min-width: 992px) {
+            .hero-section {
+                min-height: 450px;
+            }
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 300px;
+            perspective: 1000px;
+
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s ease;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner,
+        .flip-card:active .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            overflow: hidden;
+
+        }
+
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .flip-card-front {
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-img {
+            width: 80%;
+            height: auto;
+        }
+
+        .flip-card-back {
+            background-color: #6f42c1;
+            /* çekici bir mor tonu */
+            color: #ffffff;
+            /* yazının net görünmesi için beyaz */
+            border: none;
+            /* istersen kenarlığı kaldırabiliriz */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* yumuşak bir gölge efekti */
+
+            transform: rotateY(180deg);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .text-primary {
+            color: #6f42c1 !important;
+        }
+
+        .text-success {
+            color: - #1dff04 !important;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark px-4">
+        <div class="container">
+            <a class="navbar-brand mx-auto d-lg-none" href="#">Yazılım Blogu</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav d-flex align-items-center gap-4">
+                    <li class="nav-item d-none d-lg-block">
+                        <a class="navbar-brand" href="#">Yazılım Blogu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="blog_sayfasi.html">Anasayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#python">Diller</a>
+                    </li>
+                  <li><a class="nav-link" href="projeler.html">Projeler</a></li>
+                 
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section
+        class="hero-section d-flex align-items-center justify-content-center flex-column text-center p-5 position-relative"
+        style="background-image: url('blog_img/1.png'); background-size: cover; background-position: center;">
+        <div class="overlay position-absolute top-0 start-0 w-100 h-100"
+            style="background-color: rgba(0, 0, 0, 0.5); z-index: 1;"></div>
+
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="display-4 text-white">Yazılım Dilleri Rehberine Hoş Geldin</h1>
+            <p class="lead text-white">Python'dan JavaScript'e, kod dünyasının temellerini birlikte keşfediyoruz.</p>
+            <a href="#diller" class="btn btn-white mt-3">Hemen Başla</a>
+        </div>
+    </section>
+    <br><br>
+
+
+    <section id="diller" class="container mt-5">
+        <h2 class="mb-4 text-center">Popüler Yazılım Dilleri</h2>
+        <div class="row">
+
+            <div class="col-md-4 mb-4">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="blog_img/python.jpeg" alt="Python" class="card-img">
+                        </div>
+                        <div class="flip-card-back">
+                            <h5>Python</h5>
+                            <p>Python, okunabilirliği yüksek sözdizimi sayesinde hem başlangıç seviyesindeki
+                                geliştiriciler hem de profesyoneller tarafından tercih edilir. Veri bilimi, yapay zekâ
+                                ve web geliştirme gibi alanlarda çok etkilidir.</p>
+                            <button onclick="window.location='#python'" class="btn btn-primary">Daha Fazla</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JavaScript -->
+            <div class="col-md-4 mb-4">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="blog_img/js.jpeg" alt="JavaScript" class="card-img">
+                        </div>
+                        <div class="flip-card-back">
+                            <h5>JavaScript</h5>
+                            <p>JavaScript, modern web'in dinamik yapısını sağlar. Front-end ve back-end'de kullanılır,
+                                etkileşimli kullanıcı arayüzleri ve gerçek zamanlı uygulamalar için vazgeçilmezdir.</p>
+                            <button onclick="window.location='#javascript'" class="btn btn-primary">Daha Fazla</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- C# -->
+            <div class="col-md-4 mb-4">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="blog_img/c.jpeg" alt="C#" class="card-img">
+                        </div>
+                        <div class="flip-card-back">
+                            <h5>C#</h5>
+                            <p>C#, oyun geliştirme (Unity), masaüstü uygulamaları ve web servisleri için güçlü bir
+                                Microsoft dilidir. Nesne yönelimli yapısıyla sağlam çözümler sunar.</p>
+                            <button onclick="window.location='#csharp'" class="btn btn-primary">Daha Fazla</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <br><br>
+    <hr>
+    <div id="python" class="container my-5">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="display-4 font-weight-bold">Python Hakkında Daha Fazla Bilgi</h2>
+                <p class="lead text-muted">Basitliği, esnekliği ve güçlü kütüphaneleriyle her alanda karşımıza çıkan bir
+                    dil.</p>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <img src="blog_img/python.jpeg" alt="Python Logo" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6">
+                <h3 class="font-weight-bold text-primary">Python Nerelerde Kullanılır?</h3>
+                <ul class="list-unstyled">
+                    <li><strong>🌍 Web Geliştirme:</strong> Django ve Flask gibi popüler framework'lerle güçlü web
+                        uygulamaları oluşturulur.</li>
+                    <li><strong>📊 Veri Bilimi & Makine Öğrenimi:</strong> NumPy, Pandas ve TensorFlow gibi araçlarla
+                        büyük veri analizi ve yapay zeka projeleri geliştirilir.</li>
+                    <li><strong>🛠️ Otomasyon & Scripting:</strong> Tekrarlayan işlemleri otomatik hale getirmek ve
+                        sistem yönetimi için kullanılır.</li>
+                    <li><strong>🎮 Oyun Geliştirme:</strong> Pygame ve benzeri kütüphanelerle oyun programlama
+                        yapılabilir.</li>
+                    <li><strong>🚀 Siber Güvenlik & Hacking:</strong> Ağ analizi ve güvenlik testleri için siber
+                        güvenlik alanında kullanılır.</li>
+                    <li><strong>💾 Veri Tabanı Yönetimi:</strong> SQLAlchemy gibi araçlarla veritabanları ile etkileşim
+                        sağlanır.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <h3 class="font-weight-bold text-success">Neden Python?</h3>
+                <p class="lead">Python’un okunabilirliği yüksek sözdizimi ve geniş ekosistemi, onu hem yeni başlayanlar
+                    hem de uzmanlar için mükemmel bir seçenek yapar.</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div id="csharp" class="container my-5">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="display-4 font-weight-bold">C# Hakkında Daha Fazla Bilgi</h2>
+                <p class="lead text-muted">Güçlü ve modern bir dil, özellikle Microsoft teknolojileriyle uyumlu.</p>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+
+            <div class="col-md-6">
+                <h3 class="font-weight-bold text-primary">C# Nerelerde Kullanılır?</h3>
+                <ul class="list-unstyled">
+                    <li><strong>🖥️ Windows Uygulamaları:</strong> .NET Framework ve .NET Core ile güçlü masaüstü
+                        uygulamaları geliştirilir.</li>
+                    <li><strong>🌐 Web Geliştirme:</strong> ASP.NET kullanılarak dinamik web siteleri oluşturulur.</li>
+                    <li><strong>🎮 Oyun Geliştirme:</strong> Unity motoru sayesinde C# oyun geliştirme dünyasında önemli
+                        bir yere sahiptir.</li>
+                    <li><strong>📡 Bulut ve Mikroservisler:</strong> Azure ve diğer bulut hizmetlerinde C# yaygın olarak
+                        kullanılır.</li>
+                    <li><strong>🚀 Büyük Ölçekli Kurumsal Uygulamalar:</strong> Bankacılık, sağlık ve finans
+                        sektörlerinde güvenilir uygulamalar geliştirilir.</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <img src="blog_img/c.jpeg" alt="C# Logo" class="img-fluid rounded">
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <h3 class="font-weight-bold text-success">Neden C#?</h3>
+                <p class="lead">C#, güçlü tip güvenliği, geniş kütüphane desteği ve modern yapılarıyla kurumsal yazılım
+                    geliştirme dünyasında önemli bir yere sahiptir.</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div id="javascript" class="container my-5">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="display-4 font-weight-bold">JavaScript Hakkında Daha Fazla Bilgi</h2>
+                <p class="lead text-muted">Web dünyasının vazgeçilmez programlama dili.</p>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <img src="blog_img/js.jpeg" alt="JavaScript Logo" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6">
+                <h3 class="font-weight-bold text-primary">JavaScript Nerelerde Kullanılır?</h3>
+                <ul class="list-unstyled">
+                    <li><strong>🌍 Web Geliştirme:</strong> HTML ve CSS ile birlikte interaktif web siteleri
+                        oluşturulur.</li>
+                    <li><strong>📱 Mobil Uygulama Geliştirme:</strong> React Native gibi framework’ler ile mobil
+                        uygulamalar yapılabilir.</li>
+                    <li><strong>🚀 Backend Geliştirme:</strong> Node.js sayesinde sunucu tarafında kullanılabilir.</li>
+                    <li><strong>🎮 Oyun Geliştirme:</strong> Phaser.js gibi kütüphanelerle web tabanlı oyunlar
+                        geliştirilir.</li>
+                    <li><strong>⚡ Tarayıcı ve Kullanıcı Deneyimi:</strong> Animasyonlar, butonlar ve etkileşimli
+                        içerikler için tercih edilir.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <h3 class="font-weight-bold text-success">Neden JavaScript?</h3>
+                <p class="lead">JavaScript, modern web uygulamalarının olmazsa olmazıdır. Tarayıcıda çalışabilmesi ve
+                    geniş kütüphane desteği sayesinde her seviyeden geliştirici için idealdir.</p>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <footer class="text-center p-4 mt-5">
+        <p class="mb-0">&copy; 2025 Yazılım Blogu | <a href="#"
+                class="text-white text-decoration-underline">İletişim</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

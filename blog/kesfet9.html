@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kesfet - JavaScript Hareketli Top Oyunu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card {
+            border-radius: 15px;
+        }
+
+        .code-block {
+            font-family: 'Courier New', monospace;
+            background: #212529;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .list-group-item {
+            border-radius: 10px;
+        }
+
+        .btn-lg {
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn-lg:hover {
+            transform: scale(1.05);
+        }
+
+        .blog-container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .game-container {
+            background: #343a40;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+            max-width: 450px;
+        }
+
+        canvas {
+            border: 3px solid white;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="blog-container">
+    <div class="card shadow-lg rounded p-4 bg-light">
+        <h2 class="text-center text-primary">🎯 JavaScript ile Hareketli Top Oyunu</h2>
+        <p class="lead text-dark text-center">Topa dokunarak en yüksek skoru yapmaya çalış!</p>
+
+        <h4 class="text-warning mt-5">📌 Kaynak Kodlar</h4>
+        <p class="text-dark">Aşağıdaki kodları kopyalayarak kendi projenize ekleyebilirsiniz!</p>
+
+        <h4 class="text-primary mt-3">💻 HTML Yapısı</h4>
+        <pre class="code-block">
+            &lt;div class="game-container"&gt;
+                &lt;canvas id="gameCanvas" width="400" height="300"&gt;&lt;/canvas&gt;
+                &lt;h3&gt;Skor: &lt;span id="score"&gt;0&lt;/span&gt; | Kalan Süre: &lt;span id="timer"&gt;30&lt;/span&gt; sn&lt;/h3&gt;
+                &lt;button class="btn btn-success btn-lg" id="startButton"&gt;Oyunu Başlat&lt;/button&gt;
+            &lt;/div&gt;
+        </pre>
+
+        <h4 class="text-warning mt-5">🎨 CSS ile Estetik Dokunuş</h4>
+        <pre class="code-block">
+            .game-container {
+                background: #343a40;
+                color: white;
+                padding: 20px;
+                border-radius: 15px;
+                display: inline-block;
+                max-width: 450px;
+            }
+
+            canvas {
+                border: 3px solid white;
+                background: black;
+            }
+        </pre>
+
+        <h4 class="text-danger mt-5">🚀 JavaScript ile Oyun Mekaniği</h4>
+        <pre class="code-block">
+            let canvas = document.getElementById("gameCanvas");
+            let ctx = canvas.getContext("2d");
+            let score = 0;
+            let timeLeft = 30;
+            let ball = { x: 50, y: 150, size: 20, speedX: 3, speedY: 3 };
+            let gameInterval, timerInterval;
+
+            function startGame() {
+                score = 0;
+                timeLeft = 30;
+                document.getElementById("score").innerText = score;
+                document.getElementById("timer").innerText = timeLeft;
+
+                clearInterval(gameInterval);
+                clearInterval(timerInterval);
+                gameInterval = setInterval(updateGame, 50);
+                timerInterval = setInterval(updateTimer, 1000);
+            }
+
+            function updateGame() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = "red";
+                ctx.beginPath();
+                ctx.arc(ball.x, ball.y, ball.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                ball.x += ball.speedX;
+                ball.y += ball.speedY;
+
+                if (ball.x > canvas.width - ball.size || ball.x < ball.size) ball.speedX *= -1;
+                if (ball.y > canvas.height - ball.size || ball.y < ball.size) ball.speedY *= -1;
+            }
+
+            function updateTimer() {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    document.getElementById("timer").innerText = timeLeft;
+                } else {
+                    clearInterval(gameInterval);
+                    clearInterval(timerInterval);
+                    alert("⏳ Süre doldu! Skorunuz: " + score);
+                }
+            }
+
+            function checkHit(event) {
+                let rect = canvas.getBoundingClientRect();
+                let mouseX = event.clientX - rect.left;
+                let mouseY = event.clientY - rect.top;
+
+                let dist = Math.sqrt((mouseX - ball.x) ** 2 + (mouseY - ball.y) ** 2);
+                if (dist < ball.size) {
+                    score++;
+                    document.getElementById("score").innerText = score;
+                    ball.speedX = (Math.random() - 0.5) * 6;
+                    ball.speedY = (Math.random() - 0.5) * 6;
+                }
+            }
+
+            canvas.addEventListener("click", checkHit);
+            document.getElementById("startButton").addEventListener("click", startGame);
+        </pre>
+
+        <h4 class="text-dark mt-5">📷 Oyun</h4>
+        <div class="game-container">
+            <canvas id="gameCanvas" width="400" height="300"></canvas>
+            <h3>Skor: <span id="score">0</span> | Kalan Süre: <span id="timer">30</span> sn</h3>
+            <button class="btn btn-success btn-lg" id="startButton">Oyunu Başlat</button>
+        </div>
+
+        <div class="text-center mt-5">
+            <button class="btn btn-primary btn-lg shadow" onclick="window.location.href='projeler.html';">🔙 Geri Dön</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let canvas = document.getElementById("gameCanvas");
+    let ctx = canvas.getContext("2d");
+    let score = 0;
+    let timeLeft = 30;
+    let ball = { x: 50, y: 150, size: 20, speedX: 3, speedY: 3 };
+    let gameInterval, timerInterval;
+
+    function startGame() {
+        score = 0;
+        timeLeft = 30;
+        document.getElementById("score").innerText = score;
+        document.getElementById("timer").innerText = timeLeft;
+
+        clearInterval(gameInterval);
+        clearInterval(timerInterval);
+        gameInterval = setInterval(updateGame, 50);
+        timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    function updateGame() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        ball.x += ball.speedX;
+        ball.y += ball.speedY;
+
+        if (ball.x > canvas.width - ball.size || ball.x < ball.size) ball.speedX *= -1;
+        if (ball.y > canvas.height - ball.size || ball.y < ball.size) ball.speedY *= -1;
+    }
+
+    function updateTimer() {
+        if (timeLeft > 0) {
+            timeLeft--;
+            document.getElementById("timer").innerText = timeLeft;
+        } else {
+            clearInterval(gameInterval);
+            clearInterval(timerInterval);
+            alert("⏳ Süre doldu! Skorunuz: " + score);
+        }
+    }
+
+    function checkHit(event) {
+        let rect = canvas.getBoundingClientRect();
+        let mouseX = event.clientX - rect.left;
+        let mouseY = event.clientY - rect.top;
+
+        let dist = Math.sqrt((mouseX - ball.x) ** 2 + (mouseY - ball.y) ** 2);
+        if (dist < ball.size) {
+            score++;
+            document.getElementById("score").innerText = score;
+            ball.speedX = (Math.random() - 0.5) * 6;
+            ball.speedY = (Math.random() - 0.5) * 6;
+        }
+    }
+
+    canvas.addEventListener("click", checkHit);
+    document.getElementById("startButton").addEventListener("click", startGame);
+</script>
+
+</body>
+</html>

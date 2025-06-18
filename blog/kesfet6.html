@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keşfet - C# Oyun Geliştirme</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card {
+            border-radius: 15px;
+        }
+
+        .code-block {
+            font-family: 'Courier New', monospace;
+        }
+
+        .list-group-item {
+            border-radius: 10px;
+        }
+
+        .btn-lg {
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn-lg:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<div id="csharp-game-details" class="container my-5">
+    <div class="card shadow-lg rounded p-4 bg-light">
+        <h2 class="text-center text-primary">🎮 C# ile Oyun Geliştirme</h2>
+        <p class="lead text-dark text-center">Unity ve C# kullanarak basit bir platform oyunu geliştir!</p>
+
+        <div class="row mt-4">
+            <!-- Görsel -->
+            <div class="col-md-6">
+                <img src="blog_img/py_oyun.png" class="img-fluid rounded shadow">
+            </div>
+
+            <!-- Açıklamalar -->
+            <div class="col-md-6">
+                <h4 class="text-success">🛠️ Gereksinimler</h4>
+                <ul class="list-group">
+                    <li class="list-group-item">Unity Engine</li>
+                    <li class="list-group-item">C# ile Oyun Mekanikleri</li>
+                    <li class="list-group-item">Fizik ve Çarpışma Yönetimi (`Rigidbody` ve `Collider` kullanımı)</li>
+                    <li class="list-group-item">Karakter Hareketi (`Input.GetAxis` ile kontrol sağlama)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Kod Örneği -->
+        <h4 class="text-warning mt-5">💻 Örnek Kod (Basit Karakter Kontrolleri)</h4>
+        <pre class="code-block p-3 rounded bg-dark text-white">
+            using UnityEngine;
+
+            public class PlayerController : MonoBehaviour
+            {
+                public float speed = 5f;
+                public float jumpForce = 5f;
+                private Rigidbody2D rb;
+
+                void Start()
+                {
+                    rb = GetComponent<Rigidbody2D>();
+                }
+
+                void Update()
+                {
+                    float moveX = Input.GetAxis("Horizontal") * speed;
+                    rb.velocity = new Vector2(moveX, rb.velocity.y);
+
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    }
+                }
+            }
+        </pre>
+
+        <!-- Yapılış Adımları -->
+        <h4 class="text-danger mt-4">🚀 Nasıl Yapılır?</h4>
+        <ol class="list-group list-group-numbered">
+            <li class="list-group-item">Unity'de yeni bir **2D Oyun Projesi** oluşturun.</li>
+            <li class="list-group-item">**Ana karakterinizi** sahneye ekleyin ve `Rigidbody2D`, `BoxCollider2D` gibi bileşenler ekleyin.</li>
+            <li class="list-group-item">Yukarıdaki C# kodu ile **karakter hareketini** ve **zıplamayı** kontrol edin.</li>
+            <li class="list-group-item">Arkaplan ve engeller ekleyerek **oyun dünyasını oluşturun**.</li>
+            <li class="list-group-item">Oyununuzu test edip geliştirmeye devam edin! 🚀</li>
+        </ol>
+
+        <!-- Geri Dön Butonu -->
+        <div class="text-center mt-5">
+            <button class="btn btn-primary btn-lg shadow" onclick="window.location.href='projeler.html';">🔙 Geri Dön</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

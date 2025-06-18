@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keşfet - JavaScript Hava Durumu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card {
+            border-radius: 15px;
+        }
+
+        .code-block {
+            font-family: 'Courier New', monospace;
+            background: #212529;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .list-group-item {
+            border-radius: 10px;
+        }
+
+        .btn-lg {
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn-lg:hover {
+            transform: scale(1.05);
+        }
+
+        .blog-container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .weather-container {
+            background: #343a40;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+            max-width: 400px;
+        }
+
+        .weather-info {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="blog-container">
+    <div class="card shadow-lg rounded p-4 bg-light">
+        <h2 class="text-center text-primary">🌦️ JavaScript ile Hava Durumu Uygulaması</h2>
+        <p class="lead text-dark text-center">API kullanarak şehir bazlı hava durumu bilgisi alalım!</p>
+
+        <h4 class="text-success">🛠️ Gereksinimler</h4>
+        <ul class="list-group">
+            <li class="list-group-item">HTML – Kullanıcı arayüzü</li>
+            <li class="list-group-item">CSS – Şık ve modern bir tasarım</li>
+            <li class="list-group-item">JavaScript – API kullanarak veri çekme işlemi</li>
+            <li class="list-group-item">OpenWeather API – Hava durumu verisi sağlamak için</li>
+        </ul>
+
+        <h4 class="text-primary mt-5">💻 HTML Yapısı</h4>
+        <pre class="code-block">
+            &lt;div class="weather-container"&gt;
+                &lt;h2 class="text-warning"&gt;🌦️ JavaScript Hava Durumu&lt;/h2&gt;
+                
+                &lt;input type="text" id="city" placeholder="Şehir Girin" class="form-control"&gt;
+                &lt;button class="btn btn-success btn-lg" onclick="getWeather()"&gt;Hava Durumunu Göster&lt;/button&gt;
+
+                &lt;div class="weather-info mt-3" id="weatherResult"&gt;Şehir bilgisi girin...&lt;/div&gt;
+            &lt;/div&gt;
+        </pre>
+
+        <h4 class="text-warning mt-5">🎨 CSS ile Estetik Dokunuş</h4>
+        <pre class="code-block">
+            .weather-container {
+                background: #343a40;
+                color: white;
+                padding: 30px;
+                border-radius: 15px;
+                display: inline-block;
+                max-width: 400px;
+            }
+
+            .weather-info {
+                font-size: 24px;
+                font-weight: bold;
+            }
+        </pre>
+
+        <h4 class="text-danger mt-5">🚀 JavaScript ile API Entegrasyonu</h4>
+        <pre class="code-block">
+            async function getWeather() {
+                let city = document.getElementById("city").value;
+                let apiKey = "YOUR_API_KEY"; // API anahtarınızı buraya ekleyin
+                let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+
+                try {
+                    let response = await fetch(url);
+                    let data = await response.json();
+
+                    if (data.cod === 200) {
+                        document.getElementById("weatherResult").innerHTML = 
+                            `🌍 ${data.name}: ${data.weather[0].description}, 🌡️ ${data.main.temp}°C`;
+                    } else {
+                        document.getElementById("weatherResult").innerHTML = "🚫 Şehir bulunamadı!";
+                    }
+                } catch (error) {
+                    document.getElementById("weatherResult").innerHTML = "⚠️ Veri alınırken hata oluştu!";
+                }
+            }
+        </pre>
+
+        <h4 class="text-dark mt-5">📷 Ekran Görüntüsü</h4>
+        <img src="blog_img/Ekran görüntüsü 2025-06-18 145419.png" class="img-fluid rounded shadow" alt="JavaScript Hava Durumu Uygulaması">
+
+        <h4 class="text-success mt-5">📝 Sonuç</h4>
+        <p class="text-dark">
+            ✅ JavaScript ile API kullanarak hava durumu bilgisi çektik.<br>
+            ✅ Kullanıcıdan şehir girdisi alıp canlı veri gösterdik.<br>
+            ✅ Estetik ve modern bir tasarım sunduk.<br>
+            ✅ OpenWeather API ile gerçek dünya verileri kullandık.<br>
+        </p>
+
+        <div class="text-center mt-5">
+            <button class="btn btn-primary btn-lg shadow" onclick="window.location.href='projeler.html';">🔙 Geri Dön</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

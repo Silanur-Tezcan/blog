@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keşfet - JavaScript Sayaç</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .timer-container {
+            background: #343a40;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        .btn-lg {
+            margin: 10px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn-lg:hover {
+            transform: scale(1.05);
+        }
+
+        .timer {
+            font-size: 50px;
+            font-weight: bold;
+        }
+         .card {
+            border-radius: 15px;
+        }
+
+        .code-block {
+            font-family: 'Courier New', monospace;
+            background: #212529;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .list-group-item {
+            border-radius: 10px;
+        }
+
+        .btn-lg {
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn-lg:hover {
+            transform: scale(1.05);
+        }
+
+        .blog-container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .timer-container {
+            background: #343a40;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        .timer {
+            font-size: 50px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="blog-container">
+    <div class="card shadow-lg rounded p-4 bg-light">
+        <h2 class="text-center text-primary">⏳ JavaScript ile Sayaç Uygulaması</h2>
+        <p class="lead text-dark text-center">Basit ve kullanışlı bir geri sayım uygulaması oluşturuyoruz!</p>
+
+        <h4 class="text-success">🛠️ Gereksinimler</h4>
+        <ul class="list-group">
+            <li class="list-group-item">HTML – Kullanıcı arayüzü</li>
+            <li class="list-group-item">CSS – Estetik ve animasyonlar</li>
+            <li class="list-group-item">JavaScript – Sayaç mantığını oluşturmak için</li>
+        </ul>
+
+        <h4 class="text-primary mt-5">💻 HTML Yapısı</h4>
+        <pre class="code-block">
+            &lt;div class="timer-container"&gt;
+                &lt;h2 class="text-warning"&gt;⏳ JavaScript Sayaç&lt;/h2&gt;
+                &lt;p class="timer" id="display"&gt;00:00&lt;/p&gt;
+                
+                &lt;input type="number" id="minutes" placeholder="Dakika" class="form-control"&gt;
+                &lt;input type="number" id="seconds" placeholder="Saniye" class="form-control mt-2"&gt;
+
+                &lt;button class="btn btn-success btn-lg" onclick="startTimer()"&gt;Başlat&lt;/button&gt;
+                &lt;button class="btn btn-danger btn-lg" onclick="stopTimer()"&gt;Durdur&lt;/button&gt;
+                &lt;button class="btn btn-primary btn-lg" onclick="resetTimer()"&gt;Sıfırla&lt;/button&gt;
+            &lt;/div&gt;
+        </pre>
+
+        <h4 class="text-warning mt-5">🎨 CSS ile Estetik Dokunuş</h4>
+        <pre class="code-block">
+            body {
+                background-color: #f8f9fa;
+                text-align: center;
+                padding: 50px;
+            }
+
+            .timer-container {
+                background: #343a40;
+                color: white;
+                padding: 30px;
+                border-radius: 15px;
+                display: inline-block;
+            }
+
+            .timer {
+                font-size: 50px;
+                font-weight: bold;
+            }
+        </pre>
+
+        <h4 class="text-danger mt-5">🚀 JavaScript ile Sayaç Mantığı</h4>
+        <pre class="code-block">
+            let timer;
+            let totalSeconds;
+
+            function startTimer() {
+                let minutes = document.getElementById("minutes").value || 0;
+                let seconds = document.getElementById("seconds").value || 0;
+                totalSeconds = parseInt(minutes) * 60 + parseInt(seconds);
+
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    if (totalSeconds > 0) {
+                        totalSeconds--;
+                        let min = Math.floor(totalSeconds / 60);
+                        let sec = totalSeconds % 60;
+                        document.getElementById("display").innerText = 
+                            `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+                    } else {
+                        clearInterval(timer);
+                        alert("⏳ Süre doldu!");
+                    }
+                }, 1000);
+            }
+
+            function stopTimer() {
+                clearInterval(timer);
+            }
+
+            function resetTimer() {
+                clearInterval(timer);
+                document.getElementById("display").innerText = "00:00";
+            }
+        </pre>
+
+        <h4 class="text-dark mt-5">📷 Uygulama Sonucu</h4>
+       
+<div class="timer-container">
+    <h2 class="text-warning">⏳ JavaScript Sayaç</h2>
+    <p class="timer" id="display">00:00</p>
+
+    <input type="number" id="minutes" placeholder="Dakika" class="form-control">
+    <input type="number" id="seconds" placeholder="Saniye" class="form-control mt-2">
+
+    <button class="btn btn-success btn-lg" onclick="startTimer()">Başlat</button>
+    <button class="btn btn-danger btn-lg" onclick="stopTimer()">Durdur</button>
+    <button class="btn btn-primary btn-lg" onclick="resetTimer()">Sıfırla</button>
+</div>
+
+        <h4 class="text-success mt-5">📝 Sonuç</h4>
+        <p class="text-dark">
+            ✅ JavaScript ile basit bir geri sayım uygulaması geliştirdik.<br>
+            ✅ Kullanıcıdan süre girişi alıp geri sayım başlattık.<br>
+            ✅ Estetik ve modern bir tasarım sunduk.<br>
+            ✅ JavaScript'in temel zaman fonksiyonları olan `setInterval()` ve `clearInterval()` ile süre yönetimini sağladık.<br>
+        </p>
+
+        <div class="text-center mt-5">
+            <button class="btn btn-primary btn-lg shadow" onclick="window.location.href='projeler.html';">🔙 Geri Dön</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    let timer;
+    let totalSeconds;
+
+    function startTimer() {
+        let minutes = document.getElementById("minutes").value || 0;
+        let seconds = document.getElementById("seconds").value || 0;
+        totalSeconds = parseInt(minutes) * 60 + parseInt(seconds);
+
+        clearInterval(timer);
+        timer = setInterval(function () {
+            if (totalSeconds > 0) {
+                totalSeconds--;
+                let min = Math.floor(totalSeconds / 60);
+                let sec = totalSeconds % 60;
+                document.getElementById("display").innerText = `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+            } else {
+                clearInterval(timer);
+                alert("⏳ Süre doldu!");
+            }
+        }, 1000);
+    }
+
+    function stopTimer() {
+        clearInterval(timer);
+    }
+
+    function resetTimer() {
+        clearInterval(timer);
+        document.getElementById("display").innerText = "00:00";
+    }
+</script>
+
+</body>
+</html>
